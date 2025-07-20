@@ -7,17 +7,11 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\PeminjamanController;
 
-use App\Models\Peminjaman;
-use App\Models\Buku;
-use App\Models\Anggota;
+use App\Http\Controllers\WelcomeController;
 
 use App\Http\Controllers\Admin\DashboardController;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])
